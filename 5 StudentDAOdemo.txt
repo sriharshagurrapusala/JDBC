@@ -21,9 +21,12 @@ class StudentDAO
 		{
 			
 			ResultSet rs=st.executeQuery(query);
-			rs.next();
-			String name=rs.getString(1);
-			s.name=name;
+			if(rs.next())              //Execute operations on result set only if the result set does not contains null---->Atleast one data is present
+			{
+				
+				String name=rs.getString(1);
+				s.name=name;
+			}
 			
 		}
 		}catch(Exception e)
@@ -31,8 +34,8 @@ class StudentDAO
 			System.out.println(e);
 		}
 		
-		
 		return s;
+		
 	}
 }
 public class StudentDAOdemo {
