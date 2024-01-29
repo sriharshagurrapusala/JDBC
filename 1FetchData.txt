@@ -1,0 +1,41 @@
+
+/*
+ 1 import package  import java.sql.*;
+ 2 load and register the Driver   Class.forName("com.mysql.cj.jdbc.Driver");
+ 3 Connection Establishment       Connection con=DriverManager.getConnection(url,uname,pass);
+ 4 create statement               Statement st=con.createStatement();
+ 5 Execute Query                  ResultSet rs=st.executeQuery(query);
+ 6 Process Request                String data=rs.getInt(1)+" "+rs.getString(2);
+ 7 Close connection
+ */
+
+import java.sql.*;
+
+public class Dbconn {
+
+	public static void main(String[] args) throws Exception
+	{
+		String url="jdbc:mysql://localhost:3306/cricket";
+		String uname="root";
+		String pass="Password@1729";
+		String query="select * from cricket.player";
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			try(Connection con=DriverManager.getConnection(url,uname,pass);
+				Statement st=con.createStatement();
+				ResultSet rs=st.executeQuery(query);
+					)
+			{
+				while(rs.next())
+				{
+					String data=rs.getInt(1)+" "+rs.getString(2);
+					System.out.println(data);
+				}
+			}
+		}catch(ClassNotFoundException | SQLException e)
+		{
+			e.printStackTrace();
+		}
+		
+	}
+}
