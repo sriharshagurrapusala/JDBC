@@ -1,0 +1,11 @@
+create database college;
+create table college.student (srollno int,sname varchar(20));
+
+insert into college.student(srollno,sname) values(40,"sri harsha");
+insert into college.student(srollno,sname) values(05,"raghavendra");
+insert into college.student(srollno,sname) values(43,"yaswanth");
+
+select *
+from college.student;
+select sname from college.student where srollno=40;
+
