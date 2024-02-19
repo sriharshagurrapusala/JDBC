@@ -1,0 +1,12 @@
+create database cricket;
+
+create table cricket.player(pid int,pname varchar(20));
+
+insert into cricket.player(pid,pname)values(7,"MSD");
+
+insert into cricket.player(pid,pname)values(18,"KOHLI");
+
+insert into cricket.player(pid,pname)values(45,"ROHIT");
+
+
+select * from cricket.player;
